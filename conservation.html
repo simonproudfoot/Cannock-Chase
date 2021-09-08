@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cannock Chase</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css" integrity="sha512-SvJR34InARUfJb279ipE/gjQqX11MDKaly9MNb0vevuWQJmZ23UH7F/65ScEsvLI+myKGbdfA1En82wVSCHQ8A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div id="app" class="relative">
+        <div class="backImage" style="background-image: url('assets/img/conservation-back.png'); background-color: #cce8f5; background-position: bottom center;"></div>
+        <a class="backButton" href="wildlife.html"></a>
+        <a href="menu.html" class="homeButton"></a>
+        <div class="w-1/3 infoBox leftAlign bg-secondary">
+            <h1 class="text-6xl mb-10 bold uppercase text-white">CONSERVATION</h1>
+            <p class="text-white">It’s essential that we preserve and enhance the Cannock Chase Area of Outstanding Natural Beauty for generations to come. </p>
+            <br>
+            <p class="text-white">Our conservation work is focused on protecting not only the landscape but the wildlife within it.</p>
+            <br>
+            <p style="color: #D5A400;">Tap a hotspot to learn more…</p>
+        </div>
+        <button v-for="(item, i) in conservation" @click="popups.conservation = true; selectedConservation = i" class="absolute text-primary bg-white rounded-full mr-20 py-1 pl-2 pr-3 align-middle" :style="{ top: item.position[0]  + 'px', left: item.position[1] + 'px' }">
+            <img class="inline-block rounded-full h-16 w-16" :src="item.image">
+            <span class="ml-3 mr-2 ">{{item.title}}</span>
+            <i class="ml-2 fas fa-chevron-right inline-block fa-2x align-middle"></i>
+        </button>
+        <!-- POP UP -->
+        <transition name="zoom">
+            <div v-if="popups.conservation" class="popUp borderBottom bg-white text-black">
+                <button class="closeButton" @click="popups.conservation=false"></button>
+                <div class="px-32 py-20 w-1/2">
+                    <h4 class="text-primary bold">{{conservation[selectedConservation].preTitle}}</h4>
+                    <h1 class="text-primary text-7xl mb-20 bold">{{conservation[selectedConservation].title}}</h1>
+                    <p v-html="conservation[selectedConservation].content"></p>
+                </div>
+                <div class="maskImage" :style="{ 'background-image': 'url(' + conservation[selectedConservation].image + ')' }">
+                </div>
+            </div>
+        </transition>
+    </div>
+    </div>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
+<style>
+    .popUp {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        width: calc(100% - 100px);
+        z-index: 100;
+        height: calc(100% - 100px);
+    }
+</style>

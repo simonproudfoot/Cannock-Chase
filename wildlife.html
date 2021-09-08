@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cannock Chase</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css" integrity="sha512-SvJR34InARUfJb279ipE/gjQqX11MDKaly9MNb0vevuWQJmZ23UH7F/65ScEsvLI+myKGbdfA1En82wVSCHQ8A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div id="app" class="relative seaBack">
+        <a href="menu.html" class="homeButton"></a>
+        <div class="bg-secondary w-2/6 infoBox">
+            <h1 class="text-white text-8xl mb-10 bold">WILDLIFE</h1>
+            <p class="text-white">Cannock Chase covers several different habitats, from heath and grass land to and ancient woodlands and mire. Each area is home to an array of flora and fauna.</p>
+            <br>
+            <p style="color: #D5A400;">Choose from the options to find out more.</p>
+        </div>
+        <div class="maskImage">
+        </div>
+        <div class="w-2/6 absolute right-20 z-10 mt-20 top-20">
+            <a href="species.html" class="button button--lg bg-white text-primary text-5xl mb-10 relative" style="width: 100%;"><img src="assets/img/cannock.jpg" class="absolute rounded-full h-24 w-24 left-5 top-0 bottom-0 my-auto"> Species <i class="ml-2 fas fa-chevron-right absolute right-10"></i>
+            </a>
+            <a href="habitats.html" class="button button--lg bg-white text-primary text-5xl mb-10 relative" style="width: 100%;"><img src="assets/img/cannock.jpg" class="absolute rounded-full h-24 w-24 left-5 top-0 bottom-0 my-auto"> Habitats <i class="ml-2 fas fa-chevron-right absolute right-10"></i>
+            </a>
+            <a href="conservation.html" class="button button--lg bg-white text-primary text-5xl  relative" style="width: 100%;"><img src="assets/img/cannock.jpg" class="absolute rounded-full h-24 w-24 left-5 top-0 bottom-0 my-auto"> Conservation <i class="ml-2 fas fa-chevron-right  absolute right-10"></i>
+            </a>
+
+
+        </div>
+    </div>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
+
+
+<style>
+    .infoBox {
+        position: absolute;
+        top: 0;
+        left: 100px;
+        padding: 150px 50px;
+        border-bottom: 28px solid #D5A400;
+    }
+    
+    .maskImage {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        z-index: 1;
+        background-color: #000;
+        background-image: url('assets/img/cannock.jpg');
+        clip-path: circle(93% at 100% 50%);
+    }
+    
+    .map {
+        top: -12px;
+        left: 0px;
+        width: 1923px;
+        height: 695px;
+    }
+</style>

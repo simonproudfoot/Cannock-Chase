@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cannock Chase</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"
+        integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css"
+        integrity="sha512-SvJR34InARUfJb279ipE/gjQqX11MDKaly9MNb0vevuWQJmZ23UH7F/65ScEsvLI+myKGbdfA1En82wVSCHQ8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div id="app" class="relative seaBack">
+        <a class="backButton" href="wildlife.html"></a>
+        <a href="menu.html" class="homeButton"></a>
+        <transition name="bounce" mode="out-in">
+            <div class="w-2/5 infoBox leftAlign"
+                :class="species[specieSelected].name !== 'intro' ? 'bg-white' : 'bg-secondary'" :key="specieSelected">
+                <p v-if="species[specieSelected].name !=='intro'" class="text-primary"
+                    v-html="species[specieSelected].name"></p>
+                <h1 class="text-8xl mb-10 bold uppercase"
+                    :class="species[specieSelected].name !== 'intro' ? 'text-primary' : 'text-white'"
+                    v-html="species[specieSelected].title"></h1>
+                <p v-html="species[specieSelected].text"
+                    :class="species[specieSelected].name !== 'intro' ? 'text-black' : 'text-white'"></p>
+                <br>
+                <p style="color: #D5A400;" v-if="species[specieSelected].name =='intro'">Choose an option below to meet
+                    some
+                    of the park’s other residents.</p>
+            </div>
+        </transition>
+        <div class="selectorButtons absolute bottom-20 leftAlign z-30">
+            <span style="width: 90%; height: 10px;" class="top-0 bottom-0 my-auto bg-white block absolute"></span>
+            <button v-for="(item, i) in species" @click="selectSpecie(i)" v-if="i > 0"
+                :class="i === specieSelected ? 'bg-primary text-white' : 'bg-white text-primary'"
+                class="relative rounded-full mr-20 py-1 pl-2 pr-5 align-middle">
+                <img :src="item.image" class="inline-block rounded-full h-20 w-20 ">
+                <span class="ml-6 mr-10 text">{{item.name}}</span>
+                <i class="ml-2 fas fa-chevron-right inline-block fa-2x align-middle"></i>
+            </button>
+        </div>
+        <div class="maskImage" :style="{ 'background-image': 'url(' + species[specieSelected].image + ')' }">
+        </div>
+    </div>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+@font-face {
+    font-family: "Baufra W01 Regular";
+    src: url("../fonts/regular/4d66a3130e8f4215e669c8f0321fd945.eot");
+    /* IE9*/
+    src: url("../fonts/regular/4d66a3130e8f4215e669c8f0321fd945.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/regular/4d66a3130e8f4215e669c8f0321fd945.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/regular/4d66a3130e8f4215e669c8f0321fd945.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/regular/4d66a3130e8f4215e669c8f0321fd945.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/regular/4d66a3130e8f4215e669c8f0321fd945.svg#Baufra W01 Regular") format("svg");
+    /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Baufra W01 Bold";
+    src: url("../fonts/bold/9eaea167a192b89127ef996b348b69e0.eot");
+    /* IE9*/
+    src: url("../fonts/bold/9eaea167a192b89127ef996b348b69e0.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/bold/9eaea167a192b89127ef996b348b69e0.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/bold/9eaea167a192b89127ef996b348b69e0.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/bold/9eaea167a192b89127ef996b348b69e0.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/bold/9eaea167a192b89127ef996b348b69e0.svg#Baufra W01 Bold") format("svg");
+    /* iOS 4.1- */
+}
+
+#app {
+    font-family: "Baufra W01 Regular";
+    width: 1920px;
+    height: 1080px;
+    background-color: black;
+    font-size: 20px;
+}
+
+h1 {
+    font-family: "Baufra W01 Regular"
+}
+
+.bold,
+strong {
+    font-family: "Baufra W01 Bold";
+}
+
+.seaBack {
+    background-image: url('../img/seaback.png');
+}
+
+.backImage {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.text-primary {
+    color: #d19100;
+}
+
+.bg-primary {
+    background-color: #d19100;
+}
+
+.bg-secondary {
+    background-color: #0C8880;
+}
+
+.button {
+    padding: 1em 2em;
+    ;
+    border-radius: 100px;
+    display: inline-block;
+    text-align: center;
+    width: max-content;
+}
+
+.button.button--lg {
+    padding: 1em;
+}
+
+.centerAll {
+    position: absolute;
+    margin: auto;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    height: auto;
+    width: 1200px;
+    text-align: center;
+}
+
+.homeButton {
+    background-image: url('../img/home.svg');
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 86px;
+    height: 86px;
+    display: block;
+    z-index: 100;
+}
+
+.backButton {
+    background-image: url('../img/back.svg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 86px;
+    height: 86px;
+    display: block;
+    z-index: 100;
+}
+
+.closeButton {
+    background-image: url('../img/close.svg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 86px;
+    height: 86px;
+    display: block;
+    z-index: 100;
+}
+
+.infoBox {
+    position: absolute;
+    top: 0;
+    padding: 80px 50px;
+    border-bottom: 28px solid #D5A400;
+}
+
+.borderBottom {
+    border-bottom: 28px solid #D5A400;
+}
+
+.maskImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+    background-color: #000;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('assets/img/cannock.jpg');
+    clip-path: circle(93% at 100% 50%);
+}
+
+.map {
+    top: -12px;
+    left: 0px;
+    width: 1923px;
+    height: 695px;
+}
+
+.leftAlign {
+    left: 150px;
+}
+
+.rightAlign {
+    right: 150px;
+}
+
+.bounce-enter-active {
+    animation: bounce-in .5s;
+}
+
+.bounce-leave-active {
+    animation: bounce-in .1s reverse;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.zoom-enter-active {
+    animation: zoo-in .3s;
+}
+
+.zoom-leave-active {}
+
+@keyframes zoo-in {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
