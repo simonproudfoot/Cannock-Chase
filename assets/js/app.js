@@ -11,6 +11,72 @@ var app = new Vue({
                     lowlandHeath: false
                 }
             },
+            // Site management
+            quizActive: false,
+            activeQuestion: 0,
+            quizTimeLine: gsap.timeline({ reversed: true, onReverseComplete: this.resetQuiz }),
+            quiz: [{
+                    image: 'assets/img/cannock.jpg',
+                    question: 'Dogs should be kept on leads to protect which ground-nesting birds?',
+                    options: ['Nightjars', 'Cuckoos', 'Owls'],
+                    answer: '',
+                    correctAnswer: 'Nightjars'
+                },
+                {
+                    image: 'assets/img/cannock.jpg',
+                    question: 'What plant can dog waste cause if left on the heathlands?',
+                    options: ['Sphagnum moss', 'Heather', 'Round-leaved sundew'],
+                    answer: '',
+                    correctAnswer: 'Sphagnum moss'
+                },
+                {
+                    image: 'assets/img/cannock.jpg',
+                    question: 'Why should visitors look out for safety signage?',
+                    options: ['So they don’t walk into it', 'It pinpoints Yeti sightings', 'To avoid machinery on working farms'],
+                    answer: '',
+                    correctAnswer: 'So they don’t walk into it'
+                },
+                {
+                    image: 'assets/img/cannock.jpg',
+                    question: 'What should dog walkers look out for in warmer weather?',
+                    options: ['Dog sun cream', 'Adders', 'Cats'],
+                    answer: '',
+                    correctAnswer: 'Dog sun cream'
+                },
+                {
+                    image: 'assets/img/cannock.jpg',
+                    question: 'Why do we ask walkers to stay to designated paths?',
+                    options: ['So they don’t get lost', 'Creating new ones harms our habitats', 'So they don’t see the Yeti'],
+                    answer: '',
+                    correctAnswer: 'So they don’t get lost'
+                }
+            ],
+            managementSelected: null,
+            management: [{
+                icon: 'assets/img/icon-dog.svg',
+                text: 'Bag and bin dog poo. Animal mess left on the heathland adds lots of nutrients and physically changes the soil, which makes the heather sick.'
+            }, {
+                icon: 'assets/img/icon-fire.svg',
+                text: 'Take your litter home and refrain from lighting fires or BBQs.'
+            }, {
+                icon: 'assets/img/icon-trash.svg',
+                text: 'Bag and bin dog poo. Animal mess left on the heathland adds lots of nutrients and physically changes the soil, which makes the heather sick.'
+            }, {
+                icon: 'assets/img/icon-snake.svg',
+                text: 'Dog walkers: in warmer weather, adders may bask in sunny spots. They can bite dogs if cornered, so keep an eye on your pooch.'
+            }, {
+                icon: 'assets/img/icon-cycle.svg',
+                text: 'Mountain-bikers: please use the designated tracks for your safety and for the protection of our wildlife.'
+            }, {
+                icon: 'assets/img/icon-walk.svg',
+                text: 'Walkers: please keep to the footpaths and bridleways. Creating new paths cuts up the habitats we need to protect.'
+            }, {
+                icon: 'assets/img/icon-cycleB.svg',
+                text: 'Cyclists: please keep to the cycleways and dismount to pass others when necessary.'
+            }, {
+                icon: 'assets/img/icon-tractor.svg',
+                text: 'Large amounts of the area are actively forested and there are many working farms, so watch out for machinery and safety signage'
+            }],
             // Wildlifes
             selectedConservation: 0,
             conservation: [{
@@ -121,10 +187,144 @@ var app = new Vue({
             ]
         }
     },
-    mounted() {},
+    mounted() {
+        gsap.fromTo('.speechBox', {
+            rotation: 90,
+            scale: 0.3,
+            opacity: 0
+        }, {
+            delay: 2,
+            scale: 1,
+            opacity: 1,
+            rotation: 0,
+            duration: 0.2,
+        })
+        gsap.fromTo('.sceneryAnim', {
+            y: 350
+        }, {
+            delay: 0.3,
+            duration: 2,
+            y: 0
+        })
+        gsap.fromTo('.character', {
+            y: 200
+        }, {
+            delay: 0.3,
+            duration: 2,
+            y: 0
+        })
+        gsap.fromTo('.infoBox', {
+            opacity: 0,
+            y: -50
+        }, {
+            delay: 0.3,
+            opacity: 1,
+            duration: 0.5,
+            y: 0
+        })
+        gsap.fromTo('.pageMenu .button, .pageDiscover .button, .pageHabitats button, .pageConservation button', {
+                opacity: 0,
+                scale: 0.8,
+            }, {
+                delay: 0.5,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.2,
+                scale: 1,
+            })
+            // INTRO ANIMATIONS
+        gsap.to('.pageIndex .button, .pageIndex .badge', {
+            opacity: 1,
+            duration: 1.5,
+            delay: 4
+        })
+        gsap.fromTo('.pageIndex .intro-1', {
+            opacity: 0,
+            yPercent: 50,
+        }, {
+            delay: 0.5,
+            opacity: 1,
+            duration: 1,
+            stagger: 1,
+            yPercent: 0,
+        })
+        gsap.to('.pageIndex .intro-1', {
+            opacity: 0,
+            duration: 0.7,
+            delay: 6,
+            display: 'none'
+        })
+        gsap.fromTo('.pageIndex .intro-2', {
+            opacity: 0,
+            yPercent: 50,
+        }, {
+            delay: 7,
+            opacity: 1,
+            duration: 1,
+            stagger: 1,
+            yPercent: 0,
+        })
+    },
+
+    computed: {
+        quizResult() {
+            var correct = 0
+            this.quiz.forEach(x => {
+                x.answer === x.correctAnswer ? correct++ : null
+            });
+            return correct
+        }
+    },
     methods: {
-        selectPopup(val) {
-            this[val] = true
+        answerQ(val) {
+            if (this.quiz[this.activeQuestion] != undefined) {
+                var old = this.quiz[this.activeQuestion]
+                old.answer = val
+                this.$set(this.quiz, this.activeQuestion, old)
+                setTimeout(() => {
+                    this.activeQuestion <= this.quiz.length ? this.activeQuestion++ : null
+                }, 400);
+            }
+            if (this.activeQuestion == this.quiz.length - 1) {
+                setTimeout(() => {
+                    alert('you answered' + this.quizResult + ' out of 5 correctly')
+                }, 500);
+
+            }
+        },
+        runQuiz(val) {
+            if (val) {
+                this.quizTimeLine.play(0)
+                    //   transformOrigin: "center center" }
+                this.quizTimeLine.to('.sceneryAnim', { scale: 1.2, duration: 1 })
+                this.quizTimeLine.to('.character', {
+                    x: 250,
+                    yPercent: 10,
+                    scale: 1.2,
+                    duration: 1,
+                }, '-=1')
+                this.quizTimeLine.set(".character", { delay: 1, transformOrigin: "center center", scaleX: -1.2, scaleY: 1.2, }, '-=1');
+                this.quizTimeLine.from('.quiz.selectorButtons', {
+                    opacity: 0,
+                    yPercent: 30,
+                    duration: 1,
+                }, '-=0.5')
+                setTimeout(() => {
+                    this.quizActive = true
+                }, 200);
+            } else {
+                this.quizTimeLine.reverse()
+                setTimeout(() => {
+                    this.quizActive = false
+                }, 1000);
+            }
+        },
+        resetQuiz() {
+            this.quiz.forEach(x => {
+                x.answer = ''
+            });
+            this.activeQuestion = 0
+            this.quizTimeLine.clear()
         },
         selectSpecie(i) {
             this.specieSelected = i

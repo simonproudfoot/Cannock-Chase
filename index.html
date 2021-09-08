@@ -4,20 +4,16 @@
 <head>
     <title>Cannock Chase</title>
     <script src="https://unpkg.com/vue"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"
-        integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css"
-        integrity="sha512-SvJR34InARUfJb279ipE/gjQqX11MDKaly9MNb0vevuWQJmZ23UH7F/65ScEsvLI+myKGbdfA1En82wVSCHQ8A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css" integrity="sha512-SvJR34InARUfJb279ipE/gjQqX11MDKaly9MNb0vevuWQJmZ23UH7F/65ScEsvLI+myKGbdfA1En82wVSCHQ8A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
 
     <link rel="stylesheet" href="./assets/css/global.css" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
 <body>
-    <div id="app" class="relative">
+    <div id="app" class="relative pageIndex">
         <div class="backImage" style="background-image: url('assets/img/cannock.jpg')">
         </div>
         <div class="centerAll ">
@@ -28,53 +24,16 @@
             <h1 class="text-5xl text-white w-auto intro-2">What will you</h1>
             <h1 class="text-9xl text-white intro-2" style="transform: translate(0,-30px);">Discover?</h1>
         </div>
-        <a href="menu.html"
-            class="absolute button bottom-20 mx-auto inline-block left-0 right-0 bg-primary text-white">Tap
+        <a href="menu.html" class="absolute button bottom-20 mx-auto inline-block left-0 right-0 bg-primary text-white">Tap
             to Start
             <i class="ml-2 fas fa-chevron-right"></i></a>
-        <img src="./assets/img/icon_goldfill.svg" class="badge absolute bottom-20 right-10" width="150"
-            height="150px" />
+        <img src="./assets/img/icon_goldfill.svg" class="badge absolute bottom-20 right-10" width="150" height="150px" />
     </div>
     <script src="assets/js/app.js"></script>
 </body>
 
 </html>
 
-<script>
-    var index = new Vue({
-        el: '#app',
-        data: {
-
-        },
-        mounted() {
-            gsap.to('.button, .badge', { opacity: 1, duration: 1.5, delay: 4 })
-            gsap.fromTo('.intro-1', {
-                opacity: 0,
-                yPercent: 50,
-            }, {
-                delay: 0.5,
-                opacity: 1,
-                duration: 1,
-                stagger: 1,
-                yPercent: 0,
-            })
-            gsap.to('.intro-1', { opacity: 0, duration: 0.7, delay: 6, display: 'none' })
-            gsap.fromTo('.intro-2', {
-                opacity: 0,
-                yPercent: 50,
-
-            }, {
-                delay: 7,
-                opacity: 1,
-                duration: 1,
-                stagger: 1,
-                yPercent: 0,
-            })
-
-        },
-
-    })
-</script>
 
 <style>
     h1,
@@ -82,7 +41,7 @@
     .button {
         opacity: 0;
     }
-
+    
     .backImage {
         background-size: cover;
         background-repeat: no-repeat;

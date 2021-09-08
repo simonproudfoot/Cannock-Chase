@@ -28,6 +28,7 @@
     height: 1080px;
     background-color: black;
     font-size: 20px;
+    overflow: hidden;
 }
 
 h1 {
@@ -58,7 +59,11 @@ strong {
 }
 
 .bg-primary {
-    background-color: #d19100;
+    background-color: #d19100 !important;
+}
+
+.text-secondary {
+    color: #0C8880;
 }
 
 .bg-secondary {
@@ -67,16 +72,13 @@ strong {
 
 .button {
     padding: 1em 2em;
-    ;
     border-radius: 100px;
     display: inline-block;
     text-align: center;
     width: max-content;
 }
 
-.button.button--lg {
-    padding: 1em;
-}
+.button.button--lg {}
 
 .centerAll {
     position: absolute;

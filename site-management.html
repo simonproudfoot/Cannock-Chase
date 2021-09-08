@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cannock Chase</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css" integrity="sha512-SvJR34InARUfJb279ipE/gjQqX11MDKaly9MNb0vevuWQJmZ23UH7F/65ScEsvLI+myKGbdfA1En82wVSCHQ8A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div id="app" class="relative pageSitemanagement" style="background-color: #cce8f5">
+        <div v-show="quizActive" class="backButton" @click="runQuiz(false)"></div>
+        <div class="backImage sceneryAnim" style="background-image: url('assets/img/management-background.svg'); background-position: bottom left; width: 100%"></div>
+        <a href="menu.html" class="homeButton"></a>
+        <img src="assets/img/character.svg" class="character">
+        <div v-if="!quizActive" class="speechBox absolute top-44 right-32 w-1/4">
+            <div class="px-10 pt-10 bg-white pb-5 bold text-primary text-center">To help us care for this site and enjoy your visit safely, Tap an icon to see some tips for looking out for the landscape and each other:</div>
+            <div class="block px-8 bg-white" style="border-bottom: 10px #d19100 solid ;">
+                <ul>
+                    <li v-for="(item, i) in management" class="inline-block px-5 py-3">
+                        <img :src="item.icon" class="w-16 h-16" @click="managementSelected = i">
+                    </li>
+                </ul>
+            </div>
+            <transition name="bounce" mode="out-in">
+                <div v-if="managementSelected != null" class="px-10 py-10 bg-white">
+                    <p class="text-center">{{management[managementSelected].text}}</p>
+                </div>
+            </transition>
+        </div>
+        <div v-if="!quizActive" class="w-1/3 infoBox leftAlign bg-secondary">
+            <h1 class="text-6xl mb-10 bold uppercase text-white">SITE MANAGEMENT</h1>
+            <p class="text-white">Cannock Chase Country Park has to be actively managed to help the flora and fauna to thrive. Our staff manage each habitat differently, according to its needs. For example, they work hard to clear birch and bracken on the heathland to retain
+                an open habitat.</p>
+            <br>
+            <br>
+            <button class="text-primary bg-white rounded-full mr-20 py-1 pl-5 pr-6 align-middle" @click="runQuiz(true)">
+                <span class="ml-3 mr-2 inline-block align-middle">Take the Cannock Chase <br> Country Park Quiz</span>
+                <i class="ml-2 fas fa-chevron-right inline-block fa-2x align-middle"></i>
+            </button>
+        </div>
+
+        <div v-else class="w-1/3 infoBox leftAlign bg-white">
+
+            <p class="text-secondary bold text-center">{{quiz[activeQuestion].question}}</p>
+            test: all answers are A
+            <br>
+            <br>
+            <button v-for="(item, i) in quiz[activeQuestion].options" :class="quiz[activeQuestion].answer == item ? 'bg-primary' : 'bg-secondary'" class=" bg-secondary text-white w-full rounded-full py-1 pl-5 pr-6 align-middle mb-2" @click="answerQ(item)">
+                <span class=" ml-3 mr-2 w-1/2 inline-block align-middle ">{{item}}</span>
+            </button>
+        </div>
+
+        <div v-if="quizActive " class="quiz selectorButtons absolute bottom-20 leftAlign z-30 ">
+            <span style="width: 90%; height: 10px; " class="top-0 bottom-0 my-auto bg-white block absolute "></span>
+            <button v-for="(item, i) in quiz " @click="activeQuestion=i " :class="i===activeQuestion ? 'bg-primary text-white' : 'bg-white text-primary' " class="relative rounded-full mr-10 py-1 pl-2 pr-5 align-middle ">
+                <img :src="item.image " class="inline-block rounded-full h-16 w-16 ">
+                <span class="ml-6 mr-10 text ">Question {{i+1}}</span>
+            </button>
+        </div>
+    </div>
+    </div>
+    <script src="assets/js/app.js "></script>
+</body>
+
+</html>
+<style>
+    .character {
+        position: absolute;
+        bottom: -600px;
+        left: 750px;
+    }
+</style>
