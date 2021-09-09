@@ -45,8 +45,8 @@
             <div class="px-10 pt-10 bg-white pb-5 bold text-primary text-center">To help us care for this site and enjoy your visit safely, Tap an icon to see some tips for looking out for the landscape and each other:</div>
             <div class="block px-8 bg-white" style="border-bottom: 10px #d19100 solid ;">
                 <ul>
-                    <li v-for="(item, i) in management" class="inline-block px-5 py-3">
-                        <img :src="item.icon" class="w-16 h-16" @click="managementSelected = i">
+                    <li v-for="(item, i) in management" class="inline-block px-5 py-3" :class="managementSelected == i ? 'outlineIcon' : null">
+                        <img :src="item.icon" class="w-16 h-16" @click="managementSelected = i"  >
                     </li>
                 </ul>
             </div>
@@ -95,6 +95,7 @@
 
             </div>
         </div>
+        <transition name="bounce" mode="out-in">
         <div v-if="quizActive && quiz[activeQuestion] != undefined" class="quiz selectorButtons absolute bottom-20 leftAlign z-30 ">
             <span style="width: 90%; height: 10px; " class="top-0 bottom-0 my-auto bg-white block absolute "></span>
             <button v-for="(item, i) in quiz" :class="i===activeQuestion ? 'bg-primary text-white' : 'bg-white text-primary' " class="relative rounded-full mr-10 py-1 pl-2 pr-5 align-middle ">
@@ -102,6 +103,8 @@
                 <span class="ml-6 mr-10 text ">Question {{i+1}}</span>
             </button>
         </div>
+        </transition>
+        
     </div>
     </div>
     </div>

@@ -85,28 +85,28 @@ var app = new Vue({
                     preTitle: 'Project One',
                     title: 'Heathland Restoration',
                     image: 'assets/img/cannock.jpg',
-                    position: ['149', '914'],
+                    position: ['257', '1560'],
                     content: 'We were awarded a grant of £192,221 under National Grid’s Landscape Enhancement Initiative for heathland restoration work at Gentleshaw Common. This is to be implemented over the next five years and will be delivered by our partners Staffordshire Wildlife Trust.'
                 },
                 {
                     preTitle: 'Project Four',
                     title: 'Protecting Nightjars',
                     image: 'assets/img/cannock.jpg',
-                    position: ['414', '1243'],
+                    position: ['146', '1100'],
                     content: 'West Midlands Ringing Group are working with us to carry out a survey of the Nightjar and an assessment of breeding success within Cannock Chase. As a nocturnal, ground-nesting bird it is often subject to unintentional disturbance. The results of this survey will help us formulate the best management plan to conserve this species.'
                 },
                 {
                     preTitle: 'Project Three',
                     title: 'Deer Managment',
                     image: 'assets/img/cannock.jpg',
-                    position: ['660', '895'],
+                    position: ['799', '1178'],
                     content: 'The deer population is monitored, and its numbers managed for the welfare of the animals. Management measures include the erection of deer fencing to reduce damage to farmland and installation of deer mirrors and warning signs to prevent road casualties. Please help us to look after these lovely animals by driving with care and keeping all dogs under proper control.'
                 },
                 {
                     preTitle: 'Project Five',
                     title: 'Historic Environment',
                     image: 'assets/img/cannock.jpg',
-                    position: ['740', '1447'],
+                    position: ['497', '1178'],
                     content: 'We work with community groups, societies, and local people to conserve Cannock Chase’s historic environment and connect communities to this history. Our reconstructed Great War Hut, originally situated at one of two vast training camps built here during the Great War, provides an educational experience for visitors keen to learn more about the area’s military history.'
                 },
                 {

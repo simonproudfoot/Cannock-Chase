@@ -11,8 +11,7 @@ h1 {
     font-family: "Baufra W01 Regular"
 }
 
-.bold,
-strong {
+.bold, strong {
     font-family: "Baufra W01 Bold";
 }
 
@@ -29,6 +28,26 @@ strong {
     position: absolute;
     width: 100%;
 }
+
+.outlineIcon{
+    position: relative;
+}
+
+.outlineIcon::before {
+    content: "";
+    position: absolute;
+    width: 74px;
+    height: 74px;
+    display: block;
+    border: 2px #d19100 solid;
+
+    border-radius: 100%;
+
+    top: 7px;
+    left: 15px;
+    
+}
+
 
 .text-primary {
     color: #d19100;
@@ -126,7 +145,7 @@ strong {
     clip-path: circle(93% at 100% 50%);
 }
 
-.chevron-right{
+.chevron-right {
     height: 30px;
     width: 30px;
     display: inline-block;
@@ -135,20 +154,21 @@ strong {
     background-size: contain;
     background-repeat: no-repeat;
     vertical-align: middle;
-    
 }
-.chevron-right--lg{
+
+.chevron-right--lg {
     height: 50px;
     width: 50px;
     margin-right: -15px;
 }
 
-.chevron-right--primary{
+.chevron-right--primary {
     background-image: url('../img/chevron-right-primary.svg') !important;
 }
 
-.chevron-right--secondary{
-    background-image: url('../img/chevron-right-secondary.svg') !important;;
+.chevron-right--secondary {
+    background-image: url('../img/chevron-right-secondary.svg') !important;
+    ;
 }
 
 .map {
@@ -174,6 +194,17 @@ strong {
     animation: bounce-in .1s reverse;
 }
 
+.speechBox:before {
+    content: '';
+    position: absolute;
+    top: 100px;
+    left: -50px;
+    height: 50px;
+    width: 50px;
+    clip-path: polygon(0 55%, 100% 100%, 100% 0);
+    background-color: #fff;
+}
+
 @keyframes bounce-in {
     0% {
         transform: translateY(-50px);
@@ -185,11 +216,12 @@ strong {
     }
 }
 
+
+
+
 .zoom-enter-active {
     animation: zoo-in .3s;
 }
-
-.zoom-leave-active {}
 
 @keyframes zoo-in {
     0% {
