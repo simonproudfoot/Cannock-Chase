@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cannock Chase</title>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/gsap.js"></script>
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <style>
+        @font-face {
+            font-family: "Baufra W01 Regular";
+            src: url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.eot");
+            /* IE9*/
+            src: url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+            url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.woff2") format("woff2"), /* chrome、firefox */
+            url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.woff") format("woff"), /* chrome、firefox */
+            url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+            url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.svg#Baufra W01 Regular") format("svg");
+            /* iOS 4.1- */
+        }
+        @font-face {
+            font-family: "Baufra W01 Bold";
+            src: url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.eot");
+            /* IE9*/
+            src: url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+            url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.woff2") format("woff2"), /* chrome、firefox */
+            url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.woff") format("woff"), /* chrome、firefox */
+            url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+            url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.svg#Baufra W01 Bold") format("svg");
+            /* iOS 4.1- */
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="relative seaBack">
+        <div v-if="activeHeritage !=null" class="backButton" @click="activeHeritage = null"></div>
+       
+        <video v-if="activeHeritage !=null" class="fullScreenVideo" :src="heritage[activeHeritage].video" autoplay></video>
+      
+        <a href="menu.html" class="homeButton"></a>
+        <div v-if="activeHeritage == null" class="bg-secondary w-2/6 infoBox">
+            <h1 class="text-white text-8xl mb-10 bold">HERITAGE</h1>
+            <p class="text-white">Human activity in Cannock Chase can be traced back to the late pre-historic period. Evidence includes an Iron Age hillfort and a Bronze Age burial mound. But it’s the hunting, military and mining activities of the last thousand years that
+                have shaped much of the landscape you’ll see here today.</p>
+            <br>
+            <p style="color: #D5A400;">Choose an option below to discover some of the key points in the history of Cannock Chase.</p>
+        </div>
+        <div v-if="activeHeritage == null" class="maskImage">
+        </div>
+        <transition name="bounce" mode="out-in"></transition>
+        <div v-if="activeHeritage !=null" class="bg-white w-2/6 infoBox">
+            <p class="text-black" v-html="heritage[activeHeritage].text"></p>
+        </div>
+        </transition>
+        <div class="quiz selectorButtons absolute bottom-20 leftAlign z-30">
+            <span style="width: 90%; height: 10px; " class="top-0 bottom-0 my-auto bg-white block absolute "></span>
+            <button v-for="(item, i) in heritage" :class="i===activeHeritage ? 'bg-primary text-white' : 'bg-white text-primary' " class="relative rounded-full mr-10 py-1 pl-2 pr-5 align-middle " @click="activeHeritage = i">
+                <img :src="item.image " class="inline-block rounded-full h-16 w-16 ">
+                <span class="ml-6 mr-10 text ">{{item.title}}</span>
+            </button>
+        </div>
+    </div>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
+<style>
+    .infoBox {
+        position: absolute;
+        top: 0;
+        left: 100px;
+        padding: 150px 50px;
+        border-bottom: 28px solid #D5A400;
+    }
+    .maskImage {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        z-index: 1;
+        background-color: #000;
+        background-image: url('assets/img/cannock.jpg');
+        clip-path: circle(93% at 100% 50%);
+    }
+    .map {
+        top: -12px;
+        left: 0px;
+        width: 1923px;
+        height: 695px;
+    }
+</style>

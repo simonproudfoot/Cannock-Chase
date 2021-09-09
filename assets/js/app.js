@@ -11,6 +11,25 @@ var app = new Vue({
                     lowlandHeath: false
                 }
             },
+            activeHeritage: null,
+            heritage: [{
+                image: 'assets/img/cannock.jpg',
+                title: 'Medieval',
+                text: 'Large areas of Cannock Chase have been used for hunting for around a thousand years, including the Medieval period. This is reflected in the park’s name, as hunting rights were once referred to as the ‘right of chase.’',
+                video: 'assets/video/demo.mp4',
+            },{
+                title: '17/18th Century',
+                text: 'It is also a site of industrial importance, with iron production and coal mining prevalent during the 17th and 18th centuries respectively.',
+                video: 'assets/video/demo.mp4',
+                image: 'assets/img/cannock.jpg',
+            }
+            ,{
+                title: 'The Great War',
+                text: 'During the Great War, the area was used extensively for military training. War memorials, including Commonwealth graves, attract visitors from across the world. At the visitor centre you’ll find a reconstructed Great War Hut, which would originally have been used by enlisted officers.',
+                video: 'assets/video/demo.mp4',
+                image: 'assets/img/cannock.jpg',
+            }],
+            
             // Site management
             alphabet: ['A', 'B', 'C', 'D'],
             quizActive: false,
