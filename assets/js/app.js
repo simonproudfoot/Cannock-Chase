@@ -12,7 +12,9 @@ var app = new Vue({
                 }
             },
             // Site management
+            alphabet: ['A', 'B', 'C', 'D'],
             quizActive: false,
+            quizFinished: false,
             activeQuestion: 0,
             quizTimeLine: gsap.timeline({ reversed: true, onReverseComplete: this.resetQuiz }),
             quiz: [{
@@ -276,18 +278,21 @@ var app = new Vue({
         }
     },
     methods: {
+        tryAgain() {
+            this.activeQuestion = 0
+        },
         answerQ(val) {
             if (this.quiz[this.activeQuestion] != undefined) {
-                var old = this.quiz[this.activeQuestion]
-                old.answer = val
-                this.$set(this.quiz, this.activeQuestion, old)
+                var x = this.quiz[this.activeQuestion]
+                x.answer = val
+                this.$set(this.quiz, this.activeQuestion, x)
                 setTimeout(() => {
                     this.activeQuestion <= this.quiz.length ? this.activeQuestion++ : null
                 }, 400);
             }
             if (this.activeQuestion == this.quiz.length - 1) {
                 setTimeout(() => {
-                    alert('you answered' + this.quizResult + ' out of 5 correctly')
+                    this.quizFinished = true
                 }, 500);
 
             }
@@ -313,18 +318,24 @@ var app = new Vue({
                     this.quizActive = true
                 }, 200);
             } else {
-                this.quizTimeLine.reverse()
-                setTimeout(() => {
-                    this.quizActive = false
-                }, 1000);
+
+                this.resetQuiz(true)
             }
         },
-        resetQuiz() {
+        resetQuiz(resetFully) {
             this.quiz.forEach(x => {
                 x.answer = ''
             });
+            this.quizFinished = false
             this.activeQuestion = 0
-            this.quizTimeLine.clear()
+            if (resetFully) {
+                this.quizActive = false
+
+                this.quizTimeLine.reverse()
+                setTimeout(() => {
+                    this.quizTimeLine.clear()
+                }, 2000);
+            }
         },
         selectSpecie(i) {
             this.specieSelected = i
