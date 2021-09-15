@@ -1,5 +1,20 @@
+@font-face {
+    font-family: "Baufra W01 Bold";
+    src: url("../Fonts/1487378/0d62b719-c35a-442d-8f75-dc559d54cb94.woff2") format("woff2"), url("../Fonts/1487378/0383f329-62eb-4795-83de-4aa587077532.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Baufra W01 DemiBold";
+    src: url("../Fonts/1487382/6d509590-7f90-4b0a-b29b-51e210a89433.woff2") format("woff2"), url("../Fonts/1487382/7a8d8206-eccd-4fb3-a884-03827e2dce23.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Baufra W01 Medium";
+    src: url("../Fonts/1487390/ed50095f-4512-4102-9117-087832b392c2.woff2") format("woff2"), url("../Fonts/1487390/42744a9f-48b1-489b-9254-cd9baa13966e.woff") format("woff");
+}
+
 #app {
-    font-family: "Baufra W01 Regular";
+    font-family: "Baufra W01 Medium";
     width: 1920px;
     height: 1080px;
     background-color: black;
@@ -8,10 +23,10 @@
 }
 
 h1 {
-    font-family: "Baufra W01 Regular"
+    font-family: "Baufra W01 DemiBold"
 }
 
-.fullScreenVideo{
+.fullScreenVideo {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -20,8 +35,9 @@ h1 {
     left: 0;
 }
 
-.bold, strong {
-    font-family: "Baufra W01 Bold";
+.bold,
+strong {
+    font-family: "Baufra W01 DemiBold";
 }
 
 .seaBack {
@@ -38,7 +54,7 @@ h1 {
     width: 100%;
 }
 
-.outlineIcon{
+.outlineIcon {
     position: relative;
 }
 
@@ -49,14 +65,10 @@ h1 {
     height: 74px;
     display: block;
     border: 2px #d19100 solid;
-
     border-radius: 100%;
-
     top: 7px;
     left: 15px;
-    
 }
-
 
 .text-primary {
     color: #d19100;
@@ -224,9 +236,6 @@ h1 {
         opacity: 1;
     }
 }
-
-
-
 
 .zoom-enter-active {
     animation: zoo-in .3s;

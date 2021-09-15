@@ -1,39 +1,16 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>Cannock Chase</title>
-        <script src="assets/js/vue.js"></script>
-        <script src="assets/js/gsap.js"></script>
-        <link rel="stylesheet" href="assets/css/tailwind.css" />
-        <link rel="stylesheet" href="assets/css/global.css" />
-      
-        <style>
-            @font-face {
-                font-family: "Baufra W01 Regular";
-                src: url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.eot");
-                /* IE9*/
-                src: url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-                url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.woff2") format("woff2"), /* chrome、firefox */
-                url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.woff") format("woff"), /* chrome、firefox */
-                url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-                url("assets/fonts/regular/4d66a3130e8f4215e669c8f0321fd945.svg#Baufra W01 Regular") format("svg");
-                /* iOS 4.1- */
-            }
-            @font-face {
-                font-family: "Baufra W01 Bold";
-                src: url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.eot");
-                /* IE9*/
-                src: url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-                url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.woff2") format("woff2"), /* chrome、firefox */
-                url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.woff") format("woff"), /* chrome、firefox */
-                url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-                url("assets/fonts/bold/9eaea167a192b89127ef996b348b69e0.svg#Baufra W01 Bold") format("svg");
-                /* iOS 4.1- */
-            }
-        </style>
-    
-    </head>
+<head>
+    <title>Cannock Chase</title>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/gsap.js"></script>
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+
+
+
+</head>
 
 <body>
     <div id="app" class="relative pageSitemanagement" style="background-color: #cce8f5">
@@ -46,7 +23,7 @@
             <div class="block px-8 bg-white" style="border-bottom: 10px #d19100 solid ;">
                 <ul>
                     <li v-for="(item, i) in management" class="inline-block px-5 py-3" :class="managementSelected == i ? 'outlineIcon' : null">
-                        <img :src="item.icon" class="w-16 h-16" @click="managementSelected = i"  >
+                        <img :src="item.icon" class="w-16 h-16" @click="managementSelected = i">
                     </li>
                 </ul>
             </div>
@@ -96,15 +73,15 @@
             </div>
         </div>
         <transition name="bounce" mode="out-in">
-        <div v-if="quizActive && quiz[activeQuestion] != undefined" class="quiz selectorButtons absolute bottom-20 leftAlign z-30 ">
-            <span style="width: 90%; height: 10px; " class="top-0 bottom-0 my-auto bg-white block absolute "></span>
-            <button v-for="(item, i) in quiz" :class="i===activeQuestion ? 'bg-primary text-white' : 'bg-white text-primary' " class="relative rounded-full mr-10 py-1 pl-2 pr-5 align-middle ">
+            <div v-if="quizActive && quiz[activeQuestion] != undefined" class="quiz selectorButtons absolute bottom-20 leftAlign z-30 ">
+                <span style="width: 90%; height: 10px; " class="top-0 bottom-0 my-auto bg-white block absolute "></span>
+                <button v-for="(item, i) in quiz" :class="i===activeQuestion ? 'bg-primary text-white' : 'bg-white text-primary' " class="relative rounded-full mr-10 py-1 pl-2 pr-5 align-middle ">
                 <img :src="item.image " class="inline-block rounded-full h-16 w-16 ">
                 <span class="ml-6 mr-10 text ">Question {{i+1}}</span>
             </button>
-        </div>
+            </div>
         </transition>
-        
+
     </div>
     </div>
     </div>
